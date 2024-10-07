@@ -17,6 +17,7 @@ class ShapeObjectsEditor:
     def StartPointEditor(self):
         self.point_editor = PointEditor(self.canvas, self.all_shapes)
         self.canvas.bind("<Button-1>", self.point_editor.on_button_press)
+        
 
     def StartLineEditor(self):
         self.line_editor = LineEditor(self.canvas, self.all_shapes)

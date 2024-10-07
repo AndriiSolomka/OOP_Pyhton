@@ -1,5 +1,5 @@
-from shapes_utils.shape_editor.shape_editor import ShapeEditor
 from shapes_utils.figure_shapes.point_shape import PointShape
+from shapes_utils.shape_editor.shape_editor import ShapeEditor
 
 
 class PointEditor(ShapeEditor):

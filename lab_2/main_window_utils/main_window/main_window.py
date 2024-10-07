@@ -17,8 +17,9 @@ class MainWindow:
         self.menu_bar = MenuBar(self.root, self)
         self.shape_editor = ShapeObjectsEditor(self.canvas)
 
-    def select_figure(self, figure):
+    def _select_figure(self, figure):
         self.shape_editor.clear_bindings()
+        self.menu_bar.select_name(figure)
 
         if figure == "Point":
             self.shape_editor.StartPointEditor()

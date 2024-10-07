@@ -16,7 +16,7 @@ class EllipseEditor(ShapeEditor):
             self.y1 - dy,
             self.x1 + dx,
             self.y1 + dy,
-            outline="grey",
+            outline="black",
             dash=(4, 2),
         )
 
