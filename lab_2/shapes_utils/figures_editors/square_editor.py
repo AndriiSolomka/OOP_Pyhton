@@ -1,5 +1,6 @@
-from shapes_utils.shape_editor.shape_editor import ShapeEditor
-from shapes_utils.figure_shapes.square_shape import SquareShape
+from lab_2.shapes_utils.figure_shapes.square_shape import SquareShape
+from lab_2.shapes_utils.shape_editor.shape_editor import ShapeEditor
+from lab_2.shapes_utils.temp_shapes.temp_square import TempSquare
 
 
 class SquareEditor(ShapeEditor):
@@ -7,14 +8,13 @@ class SquareEditor(ShapeEditor):
     def draw_temp_shape(self, event):
         if not self.check_coordinates():
             return
-        return self.canvas.create_rectangle(
-            self.x1, self.y1, event.x, event.y, outline="grey", dash=(4, 2)
-        )
 
-    def on_button_release(self, event):
+        temp_square = TempSquare(self._canvas, self._x1, self._y1, event.x, event.y)
+        return temp_square.show()
+
+    def draw_shape(self):
         if not self.check_coordinates():
             return
-        super().on_button_release(event)
-        square = SquareShape(self.canvas, self.x1, self.y1, event.x, event.y)
-        square.show()
-        self.all_shapes.append(square)
+        square = SquareShape(self._canvas, self._x1, self._y1, self._x2, self._y2)
+        self._all_shapes.append(square)
+        self._shape_object_editor.redraw_all_shapes()

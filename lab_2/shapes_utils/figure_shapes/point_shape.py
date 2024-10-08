@@ -1,8 +1,8 @@
-from shapes_utils.shape.shape import Shape
+from lab_2.shapes_utils.shape.shape import Shape
 
 
 class PointShape(Shape):
     def show(self):
         self.canvas.create_oval(
-            self.x1 - 2, self.y1 - 2, self.x1 + 2, self.y1 + 2, fill="black"
+            self._x1 - 2, self._y1 - 2, self._x1 + 2, self._y1 + 2, fill="black"
         )

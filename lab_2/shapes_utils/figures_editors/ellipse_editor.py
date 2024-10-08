@@ -1,5 +1,6 @@
-from shapes_utils.shape_editor.shape_editor import ShapeEditor
-from shapes_utils.figure_shapes.ellipse_shape import EllipseShape
+from lab_2.shapes_utils.figure_shapes.ellipse_shape import EllipseShape
+from lab_2.shapes_utils.shape_editor.shape_editor import ShapeEditor
+from lab_2.shapes_utils.temp_shapes.temp_ellipse import TempEllipse
 
 
 class EllipseEditor(ShapeEditor):
@@ -8,27 +9,27 @@ class EllipseEditor(ShapeEditor):
         if not self.check_coordinates():
             return
 
-        dx = abs(self.x1 - event.x)
-        dy = abs(self.y1 - event.y)
+        dx = abs(self._x1 - event.x)
+        dy = abs(self._y1 - event.y)
 
-        return self.canvas.create_oval(
-            self.x1 - dx,
-            self.y1 - dy,
-            self.x1 + dx,
-            self.y1 + dy,
-            outline="black",
-            dash=(4, 2),
+        temp_ellipse = TempEllipse(
+            self._canvas,
+            self._x1 - dx,
+            self._y1 - dy,
+            self._x1 + dx,
+            self._y1 + dy,
         )
+        return temp_ellipse.show()
 
-    def on_button_release(self, event):
+    def draw_shape(self):
         if not self.check_coordinates():
             return
 
-        super().on_button_release(event)
-        dx = abs(self.x1 - event.x)
-        dy = abs(self.y1 - event.y)
+        dx = abs(self._x1 - self._x2)
+        dy = abs(self._y1 - self._y2)
+
         ellipse = EllipseShape(
-            self.canvas, self.x1 - dx, self.y1 - dy, self.x1 + dx, self.y1 + dy
+            self._canvas, self._x1 - dx, self._y1 - dy, self._x1 + dx, self._y1 + dy
         )
-        ellipse.show()
-        self.all_shapes.append(ellipse)
+        self._all_shapes.append(ellipse)
+        self._shape_object_editor.redraw_all_shapes()

@@ -1,34 +1,34 @@
 import tkinter as tk
 
-from main_window_utils.menu_bar.menu_bar import MenuBar
-from shapes_utils.shapeObjectsEditor.shapeObjectsEditor import ShapeObjectsEditor
+from lab_2.main_window_utils.menu_bar.menu_bar import MenuBar
+from lab_2.shapes_utils.shapeObjectsEditor.shapeObjectsEditor import ShapeObjectsEditor
 
 
 class MainWindow:
     def __init__(self, root):
-        self.root = root
-        self.root.title("Lab 2")
-        self.root.geometry("800x500")
-        self.root.resizable(False, False)
+        self.__root = root
+        self.__root.title("Lab 2")
+        self.__root.geometry("800x500")
+        self.__root.resizable(False, False)
 
-        self.canvas = tk.Canvas(root, bg="white")
-        self.canvas.pack(fill=tk.BOTH, expand=True)
+        self.__canvas = tk.Canvas(root, bg="white")
+        self.__canvas.pack(fill=tk.BOTH, expand=True)
 
-        self.menu_bar = MenuBar(self.root, self)
-        self.shape_editor = ShapeObjectsEditor(self.canvas)
+        self.__menu_bar = MenuBar(self.__root, self)
+        self.shape_editor = ShapeObjectsEditor(self.__canvas)
 
-    def _select_figure(self, figure):
+    def select_figure(self, figure):
         self.shape_editor.clear_bindings()
-        self.menu_bar.select_name(figure)
+        self.__menu_bar.select_name(figure)
 
         if figure == "Point":
-            self.shape_editor.StartPointEditor()
+            self.shape_editor.start_point_editor()
 
         if figure == "Line":
-            self.shape_editor.StartLineEditor()
+            self.shape_editor.start_line_editor()
 
         if figure == "Square":
-            self.shape_editor.StartSquareEditor()
+            self.shape_editor.start_square_editor()
 
         if figure == "Ellipse":
-            self.shape_editor.StartEllipseEditor()
+            self.shape_editor.start_ellipse_editor()
