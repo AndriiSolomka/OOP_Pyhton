@@ -8,13 +8,13 @@ from lab_3.main_window_utils.toolbar.tool_lip.tool_lip import ToolTip
 
 class PointBtn(BaseFrame):
     def create_btn(self):
-        # Загрузка изображения
-        image = Image.open("path/to/your/point_image.png")
-        image = image.resize((20, 20), Image.ANTIALIAS)
-        self.point_image = ImageTk.PhotoImage(image)
+        image = Image.open("main_window_utils/toolbar/img/point.png")
+        resized_image = image.resize((40, 40), Image.Resampling.LANCZOS)
+        point_image = ImageTk.PhotoImage(resized_image)
 
-        point_button = ttk.Button(self._frame, image=self.point_image,
+        point_button = ttk.Button(self._frame, image=point_image,
                                   command=lambda: self._main_window.select_figure("Point"))
-        point_button.pack(side="left", padx=5)
 
+        point_button.image = point_image
+        point_button.pack(side="left", padx=5)
         ToolTip(point_button, "Point")
