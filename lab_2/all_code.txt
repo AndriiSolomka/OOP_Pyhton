@@ -1,0 +1,52 @@
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main.py
+
+import tkinter as tk
+
+from lab_2.main_window_utils.main_window.main_window import MainWindow
+
+
+class Paint:
+    def __init__(self):
+        self.__root = tk.Tk()
+        self.__app = MainWindow(self.__root)
+        self.__root.mainloop()
+
+
+if __name__ == "__main__":
+    Paint()
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\main_window\main_window.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\main_window\__init__.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\main_window\__innit__.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\menu_bar\menu_bar.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\menu_bar\__init__.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\menu_bar\__innit__.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\menu_items\menu_items.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\menu_items\__init__.py
+
+
+
+### File: C:\Users\asolo\OneDrive\Рабочий стол\Pyhton_labs\lab_2\main_window_utils\menu_items\__innit__.py
+
