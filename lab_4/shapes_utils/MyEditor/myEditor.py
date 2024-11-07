@@ -1,7 +1,7 @@
 from lab_4.shapes_utils.figures_editors.shapes_editor import ShapesEditor
 
 
-class ShapeObjectsEditor:
+class MyEditor:
     def __init__(self, canvas):
         self.canvas = canvas
         self.all_shapes = []
@@ -17,7 +17,6 @@ class ShapeObjectsEditor:
             shape.show()
 
     def start_editor(self, shape):
-        print(shape)
         editor = ShapesEditor(self.canvas, self.all_shapes, self, shape)
         self.canvas.bind("<Button-1>", editor.on_button_press)
         self.canvas.bind("<B1-Motion>", editor.on_mouse_drag)

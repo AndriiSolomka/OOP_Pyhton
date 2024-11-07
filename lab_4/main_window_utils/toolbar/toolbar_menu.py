@@ -1,6 +1,8 @@
 from tkinter import ttk
 
+from lab_4.main_window_utils.toolbar.shapes_btn.cube_btn import CubeBtn
 from lab_4.main_window_utils.toolbar.shapes_btn.ellipse_btn import EllipseBtn
+from lab_4.main_window_utils.toolbar.shapes_btn.ellipse_line_btn import EllipseLineBtn
 from lab_4.main_window_utils.toolbar.shapes_btn.line_btn import LineBtn
 from lab_4.main_window_utils.toolbar.shapes_btn.point_btn import PointBtn
 from lab_4.main_window_utils.toolbar.shapes_btn.square_btn import SquareBtn
@@ -10,22 +12,21 @@ class ToolBar:
     def __init__(self, root, main_window):
         self._root = root
         self._main_window = main_window
-
         self.toolbar_frame = ttk.Frame(root, padding="2 2 2 2")
         self.toolbar_frame.pack(side="top", fill="x")
 
-        # Make Point btn
-        self.point_btn = PointBtn(self.toolbar_frame, main_window, "Point")
-        self.point_btn.create_btn()
+        self.buttons = [
+            (PointBtn, "Point"),
+            (LineBtn, "Line"),
+            (SquareBtn, "Square"),
+            (EllipseBtn, "Ellipse"),
+            (EllipseLineBtn, "Ellipse Line"),
+            (CubeBtn, "Cube")
+        ]
 
-        # Make Line btn
-        self.line_btn = LineBtn(self.toolbar_frame, main_window, "Line")
-        self.line_btn.create_btn()
+        self.create_buttons()
 
-        # Make Square btn
-        self.square_btn = SquareBtn(self.toolbar_frame, main_window, "Square")
-        self.square_btn.create_btn()
-
-        # Make Ellipse btn
-        self.ellipse_btn = EllipseBtn(self.toolbar_frame, main_window, "Ellipse")
-        self.ellipse_btn.create_btn()
+    def create_buttons(self):
+        for button_class, button_name in self.buttons:
+            btn_instance = button_class(self.toolbar_frame, self._main_window, button_name)
+            btn_instance.create_btn()

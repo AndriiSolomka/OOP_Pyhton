@@ -1,8 +1,10 @@
+from lab_4.shapes_utils.figure_shapes.cube_shape import CubeShape
 from lab_4.shapes_utils.figure_shapes.ellipseLine_shape import EllipseLineShape
 from lab_4.shapes_utils.figure_shapes.ellipse_shape import EllipseShape
 from lab_4.shapes_utils.figure_shapes.line_shape import LineShape
 from lab_4.shapes_utils.figure_shapes.point_shape import PointShape
 from lab_4.shapes_utils.figure_shapes.square_shape import SquareShape
+from lab_4.shapes_utils.temp_shapes.temp_cube import TempCube
 from lab_4.shapes_utils.temp_shapes.temp_ellipse import TempEllipse
 from lab_4.shapes_utils.temp_shapes.temp_ellipseLine import TempEllipseLine
 from lab_4.shapes_utils.temp_shapes.temp_line import TempLine
@@ -14,7 +16,8 @@ class ShapeFactory:
         'Line': TempLine,
         'Square': TempSquare,
         'Ellipse': TempEllipse,
-        'EllipseLine': TempEllipseLine
+        'EllipseLine': TempEllipseLine,
+        'Cube': TempCube,
     }
 
     _shape_classes = {
@@ -22,7 +25,8 @@ class ShapeFactory:
         'Line': LineShape,
         'Square': SquareShape,
         'Ellipse': EllipseShape,
-        'EllipseLine': EllipseLineShape
+        'EllipseLine': EllipseLineShape,
+        'Cube': CubeShape,
     }
 
     @classmethod
