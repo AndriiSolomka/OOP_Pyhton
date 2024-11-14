@@ -23,17 +23,19 @@ class MainWindow:
         self.my_editor = MyEditor(self.__canvas)
 
         # Table
+        self.my_editor.event_emitter.on('shape_added', self.emmit_table_cords)
         self.coords_table = None
 
-    def get_all_shapes_coords(self):
-        return self.my_editor.shapes_coords
+    def emmit_table_cords(self):
+        if self.coords_table:
+            self.coords_table.update(self.my_editor.shapes_coords)
 
     def select_table(self, table):
-        coords = self.get_all_shapes_coords()
+        if table == "Coords":
+            self.coords_table = CoordsTable(self.__root, self.my_editor.shapes_coords)
 
-        if self.coords_table is None or not self.coords_table.root.winfo_exists():
-            if table == "Coords":
-                self.coords_table = CoordsTable(self.__root, coords)
+        if table == "Save":
+            self.coords_table.save_to_file()
 
     def select_figure(self, figure):
         self.my_editor.clear_bindings()
