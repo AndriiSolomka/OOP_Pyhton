@@ -5,6 +5,7 @@ class MyEditor:
     def __init__(self, canvas):
         self.canvas = canvas
         self.all_shapes = []
+        self.shapes_coords = []
 
     def clear_bindings(self):
         self.canvas.unbind("<Button-1>")
@@ -17,7 +18,7 @@ class MyEditor:
             shape.show()
 
     def start_editor(self, shape):
-        editor = ShapesEditor(self.canvas, self.all_shapes, self, shape)
+        editor = ShapesEditor(self.canvas, self.all_shapes, self.shapes_coords, self, shape)
         self.canvas.bind("<Button-1>", editor.on_button_press)
         self.canvas.bind("<B1-Motion>", editor.on_mouse_drag)
         self.canvas.bind("<ButtonRelease-1>", editor.on_button_release)

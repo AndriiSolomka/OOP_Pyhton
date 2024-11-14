@@ -4,10 +4,11 @@ from lab_4.shapes_utils.editor.editor import Editor
 
 
 class ShapeEditor(Editor):
-    def __init__(self, canvas, all_shapes, shape_object_editor, shape):
+    def __init__(self, canvas, all_shapes, shapes_coords, shape_object_editor, shape):
         self._canvas = canvas
         self.shape = shape
         self._all_shapes = all_shapes
+        self._shapes_coords = shapes_coords
         self._shape_object_editor = shape_object_editor
         self._x1 = None
         self._y1 = None
@@ -25,7 +26,7 @@ class ShapeEditor(Editor):
     def delete_temp_item(self):
         if not self._temp_item:
             return
-      
+
         items = self._temp_item if isinstance(self._temp_item, tuple) else [self._temp_item]
         for item in items:
             self._canvas.delete(item)

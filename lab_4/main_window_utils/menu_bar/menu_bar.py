@@ -3,6 +3,7 @@ import tkinter as tk
 from lab_4.main_window_utils.menu_items.create_file_items import CreateFileItems
 from lab_4.main_window_utils.menu_items.create_info_items import CreateInfoItems
 from lab_4.main_window_utils.menu_items.create_objects_items import CreateObjectsItems
+from lab_4.main_window_utils.menu_items.create_tables_items import CreateTablesItems
 from lab_4.main_window_utils.menu_items.menu_items import MenuBarItems
 
 
@@ -25,6 +26,10 @@ class MenuBar:
         self._info_menu = MenuBarItems(self._menu, self._main_window)
         self._info_menu.create_menu("Info", self.create_info_menu_items)
 
+        # Make "Table"
+        self._table = MenuBarItems(self._menu, self._main_window)
+        self._table.create_menu("Table", self.create_table_menu_items)
+
         root.config(menu=self._menu)
 
     def create_file_menu_items(self, menu):
@@ -38,6 +43,10 @@ class MenuBar:
 
     def create_info_menu_items(self, menu):
         menu_items = CreateInfoItems(menu, self._main_window)
+        menu_items.create_items()
+
+    def create_table_menu_items(self, menu):
+        menu_items = CreateTablesItems(menu, self._main_window)
         menu_items.create_items()
 
     def select_name(self, figure):

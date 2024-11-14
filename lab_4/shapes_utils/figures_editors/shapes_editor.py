@@ -19,5 +19,6 @@ class ShapesEditor(ShapeEditor):
         shape_class = ShapeFactory.get_shape_class(self.shape)
         if shape_class:
             shape = shape_class(self._canvas, self._x1, self._y1, self._x2, self._y2)
+            self._shapes_coords.append((self.shape, self._x1, self._y1, self._x2, self._y2))
             self._all_shapes.append(shape)
             self._shape_object_editor.redraw_all_shapes()
