@@ -15,15 +15,14 @@ class MainWindow:
 
         # Tool Bar
         self.toolbar = ToolBar(self.__root, self)
-
         self.__canvas = tk.Canvas(root, bg="white")
         self.__canvas.pack(fill=tk.BOTH, expand=True)
-
         self.__menu_bar = MenuBar(self.__root, self)
+        self.__menu_bar.create_menu()
         self.my_editor = MyEditor(self.__canvas)
 
         # Table
-        self.my_editor.event_emitter.on('shape_added', self.emmit_table_cords)
+        self.my_editor.event_manager.on('shape_added', self.emmit_table_cords)
         self.coords_table = None
 
     def emmit_table_cords(self):
@@ -34,10 +33,7 @@ class MainWindow:
         if table == "Coords":
             self.coords_table = CoordsTable(self.__root, self.my_editor.shapes_coords)
 
-        if table == "Save":
-            self.coords_table.save_to_file()
-
     def select_figure(self, figure):
         self.my_editor.clear_bindings()
-        self.__menu_bar.select_name(figure)
+        # self.__menu_bar.select_name(figure)
         self.my_editor.start_editor(figure)

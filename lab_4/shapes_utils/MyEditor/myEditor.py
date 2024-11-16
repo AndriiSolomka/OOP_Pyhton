@@ -1,5 +1,4 @@
-from pyee import EventEmitter
-
+from lab_4.main_window_utils.event_manager.event_emmiter import EventManager
 from lab_4.shapes_utils.figures_editors.shapes_editor import ShapesEditor
 
 
@@ -8,7 +7,7 @@ class MyEditor:
         self.canvas = canvas
         self.all_shapes = []
         self.shapes_coords = []
-        self.event_emitter = EventEmitter()
+        self.event_manager = EventManager()
 
     def clear_bindings(self):
         self.canvas.unbind("<Button-1>")
@@ -16,7 +15,7 @@ class MyEditor:
         self.canvas.unbind("<ButtonRelease-1>")
 
     def redraw_all_shapes(self):
-        self.event_emitter.emit('shape_added')
+        self.event_manager.emit('shape_added')
         self.canvas.delete("all")
         for shape in self.all_shapes:
             shape.show()
