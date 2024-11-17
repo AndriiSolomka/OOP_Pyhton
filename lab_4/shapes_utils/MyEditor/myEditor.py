@@ -1,13 +1,14 @@
-from lab_4.main_window_utils.event_manager.event_emmiter import EventManager
 from lab_4.shapes_utils.figures_editors.shapes_editor import ShapesEditor
 
 
 class MyEditor:
-    def __init__(self, canvas):
+    def __init__(self, canvas, event_manager):
         self.canvas = canvas
         self.all_shapes = []
         self.shapes_coords = []
-        self.event_manager = EventManager()
+        self.event_manager = event_manager
+        self.event_manager.on('shape_clicked', self.do_light)
+        self.event_manager.on('shape_delete', self.delete_item)
 
     def clear_bindings(self):
         self.canvas.unbind("<Button-1>")
@@ -18,10 +19,23 @@ class MyEditor:
         self.event_manager.emit('shape_added')
         self.canvas.delete("all")
         for shape in self.all_shapes:
-            shape.show()
+            shape.show('black')
 
     def start_editor(self, shape):
         editor = ShapesEditor(self.canvas, self.all_shapes, self.shapes_coords, self, shape)
         self.canvas.bind("<Button-1>", editor.on_button_press)
         self.canvas.bind("<B1-Motion>", editor.on_mouse_drag)
         self.canvas.bind("<ButtonRelease-1>", editor.on_button_release)
+
+    def do_light(self, coords):
+        for shape in self.all_shapes:
+            shape_coords = shape.get_coordinates()
+            if all(c in shape_coords for c in coords):
+                shape.show('red')
+
+    def delete_item(self, coords):
+        for shape in self.all_shapes:
+            shape_coords = shape.get_coordinates()
+            if all(c in shape_coords for c in coords):
+                self.all_shapes.remove(shape)
+                self.redraw_all_shapes()
