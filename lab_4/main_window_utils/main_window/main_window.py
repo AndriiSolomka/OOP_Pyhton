@@ -26,15 +26,18 @@ class MainWindow:
 
         # Table
         self.event_manager.on('shape_added', self.emmit_table_cords)
-        self.coords_table = None
+        self.create_coords_table = None
 
     def emmit_table_cords(self):
-        if self.coords_table:
-            self.coords_table.update(self.my_editor.shapes_coords)
+        if self.create_coords_table:
+            self.create_coords_table.update(self.my_editor.all_shapes)
 
     def select_table(self, table):
         if table == "Coords":
-            self.coords_table = CoordsTable(self.__root, self.my_editor.shapes_coords, self.event_manager)
+            if self.create_coords_table and self.create_coords_table.is_active:
+                return
+            self.create_coords_table = CoordsTable(self.__root, self.event_manager)
+            self.create_coords_table.update(self.my_editor.all_shapes)
 
     def select_figure(self, figure):
         self.my_editor.clear_bindings()

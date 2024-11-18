@@ -4,11 +4,10 @@ from lab_4.shapes_utils.editor.editor import Editor
 
 
 class ShapeEditor(Editor):
-    def __init__(self, canvas, all_shapes, shapes_coords, shape_object_editor, shape):
+    def __init__(self, canvas, all_shapes, shape_object_editor, shape):
         self._canvas = canvas
         self.shape = shape
         self._all_shapes = all_shapes
-        self._shapes_coords = shapes_coords
         self._shape_object_editor = shape_object_editor
         self._x1 = None
         self._y1 = None
@@ -21,7 +20,7 @@ class ShapeEditor(Editor):
 
     def on_mouse_drag(self, event):
         self.delete_temp_item()
-        self._temp_item = self.draw_temp_shape(event)
+        self._temp_item = self.draw_temp_shape(event, self.shape)
 
     def delete_temp_item(self):
         if not self._temp_item:
@@ -35,7 +34,7 @@ class ShapeEditor(Editor):
         if self._temp_item:
             self._canvas.delete(self._temp_item)
         self._x2, self._y2 = event.x, event.y
-        self.draw_shape()
+        self.draw_shape(self.shape)
 
     def check_coordinates(self):
         if self._x1 is None or self._y1 is None:
@@ -43,9 +42,9 @@ class ShapeEditor(Editor):
         return True
 
     @abstractmethod
-    def draw_temp_shape(self, event):
+    def draw_temp_shape(self, event, shape):
         pass
 
     @abstractmethod
-    def draw_shape(self):
+    def draw_shape(self, shape):
         pass
