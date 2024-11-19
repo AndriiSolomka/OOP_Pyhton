@@ -5,22 +5,22 @@ class MenuBarItems:
 
     def create_shapes_items(self):
         self._menu.add_command(
-            label="Point", command=lambda: self.main_window.select_figure("Point")
+            label="Point", command=lambda: self.main_window._select_figure("Point")
         )
 
         self._menu.add_command(
             label="Line",
-            command=lambda: self.main_window.select_figure("Line"),
+            command=lambda: self.main_window._select_figure("Line"),
         )
 
         self._menu.add_command(
             label="Square",
-            command=lambda: self.main_window.select_figure("Square"),
+            command=lambda: self.main_window._select_figure("Square"),
         )
 
         self._menu.add_command(
             label="Ellipse",
-            command=lambda: self.main_window.select_figure("Ellipse"),
+            command=lambda: self.main_window._select_figure("Ellipse"),
         )
 
     def create_file_items(self):

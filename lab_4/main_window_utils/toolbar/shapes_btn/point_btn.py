@@ -13,7 +13,7 @@ class PointBtn(BaseFrame):
         point_image = ImageTk.PhotoImage(resized_image)
 
         point_button = ttk.Button(self._frame, image=point_image,
-                                  command=lambda: self._main_window.select_figure("Point"))
+                                  command=lambda: self._main_window._select_figure("Point"))
 
         point_button.image = point_image
         point_button.pack(side="left", padx=5)

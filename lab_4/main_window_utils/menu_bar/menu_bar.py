@@ -1,6 +1,7 @@
 from lab_4.main_window_utils.menu_bar.base_menus.default_menu import DefaultMenu
 from lab_4.main_window_utils.menu_bar.menus.file_menu import CreateFileMenu
 from lab_4.main_window_utils.menu_bar.menus.info_menu import CreateInfoMenu
+from lab_4.main_window_utils.menu_bar.menus.open_file_menu import CreateOpenFileMenu
 from lab_4.main_window_utils.menu_bar.menus.shapes_menu import CreateShapesMenu
 from lab_4.main_window_utils.menu_bar.menus.table_menu import CreateTableMenu
 
@@ -21,6 +22,10 @@ class MenuBar(DefaultMenu):
 
         # Make "Table"
         table_menu = CreateTableMenu(self._menu, self._main_window)
+        table_menu.create_menu()
+
+        # Make "Open File"
+        table_menu = CreateOpenFileMenu(self._menu, self._main_window)
         table_menu.create_menu()
 
     def select_name(self, figure):

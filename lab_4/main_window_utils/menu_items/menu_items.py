@@ -11,3 +11,6 @@ class MenuBarItems:
         self._menu.add_cascade(label=label, menu=new_menu)
         items_creator(new_menu)
         return new_menu
+
+    def create_single_menu(self, label, command):
+        self._menu.add_command(label=label, command=command)

@@ -13,7 +13,7 @@ class LineBtn(BaseFrame):
         line_image = ImageTk.PhotoImage(resized_image)
 
         line_button = ttk.Button(self._frame, image=line_image,
-                                 command=lambda: self._main_window.select_figure("Line"))
+                                 command=lambda: self._main_window._select_figure("Line"))
 
         line_button.image = line_image
         line_button.pack(side="left", padx=5)

@@ -14,7 +14,7 @@ class EllipseLineBtn(BaseFrame):
         ellipse_line_image = ImageTk.PhotoImage(resized_image)
 
         ellipse_line_button = ttk.Button(self._frame, image=ellipse_line_image,
-                                         command=lambda: self._main_window.select_figure("EllipseLine"))
+                                         command=lambda: self._main_window._select_figure("EllipseLine"))
 
         ellipse_line_button.image = ellipse_line_image
         ellipse_line_button.pack(side="left", padx=5)

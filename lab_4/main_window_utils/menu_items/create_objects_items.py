@@ -6,4 +6,4 @@ class CreateObjectsItems(BaseMenuItems):
         shapes = ['Point', 'Line', 'Square', 'Ellipse', 'EllipseLine', "Cube"]
 
         for shape in shapes:
-            self._menu.add_command(label=shape, command=lambda s=shape: self.main_window.select_figure(s))
+            self._menu.add_command(label=shape, command=lambda s=shape: self.main_window._select_figure(s))

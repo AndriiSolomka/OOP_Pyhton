@@ -14,7 +14,7 @@ class SquareBtn(BaseFrame):
         square_image = ImageTk.PhotoImage(resized_image)
 
         square_button = ttk.Button(self._frame, image=square_image,
-                                   command=lambda: self._main_window.select_figure("Square"))
+                                   command=lambda: self._main_window._select_figure("Square"))
 
         square_button.image = square_image
         square_button.pack(side="left", padx=5)

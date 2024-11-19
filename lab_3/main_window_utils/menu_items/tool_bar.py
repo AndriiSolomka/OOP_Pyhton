@@ -16,15 +16,15 @@ class ToolBar:
 
     def create_tool_bar_items(self):
         self.line_button = ttk.Button(self.toolbar_frame, text="Line",
-                                      command=lambda: self._main_window.select_figure("Line"))
+                                      command=lambda: self._main_window._select_figure("Line"))
         self.line_button.pack(side="left", padx=5)
 
         self.rectangle_button = ttk.Button(self.toolbar_frame, text="Square",
-                                           command=lambda: self._main_window.select_figure("Square"))
+                                           command=lambda: self._main_window._select_figure("Square"))
         self.rectangle_button.pack(side="left", padx=5)
 
         self.ellipse_button = ttk.Button(self.toolbar_frame, text="Ellipse",
-                                         command=lambda: self._main_window.select_figure("Ellipse"))
+                                         command=lambda: self._main_window._select_figure("Ellipse"))
         self.ellipse_button.pack(side="left", padx=5)
 
 
@@ -36,5 +36,5 @@ class PointBtn:
 
     def create(self):
         point_button = ttk.Button(self._frame, text=self._name,
-                                  command=lambda: self._main_window.select_figure("Point"))
+                                  command=lambda: self._main_window._select_figure("Point"))
         point_button.pack(side="left", padx=5)

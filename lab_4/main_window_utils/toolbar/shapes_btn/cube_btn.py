@@ -14,7 +14,7 @@ class CubeBtn(BaseFrame):
         cube_image = ImageTk.PhotoImage(resized_image)
 
         cube_button = ttk.Button(self._frame, image=cube_image,
-                                 command=lambda: self._main_window.select_figure("Cube"))
+                                 command=lambda: self._main_window._select_figure("Cube"))
 
         cube_button.image = cube_image
         cube_button.pack(side="left", padx=5)
